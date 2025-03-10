@@ -1,16 +1,16 @@
-
-
-
 <div>
-<label>add article </label>
-<form action="{{route.store}}" method="post">
-     <textarea name="" id="">
-
-     </textarea>
-
-     @foreach(categories as category)
-     <Select>Select category <option value="{{route.index}}"></option></Select>
-     @endforeach
-     <button>save</button>
-</form>
+    <label>Add Article</label>
+    <form action="{{ route('article.store') }}" method="POST">
+        @csrf
+        <textarea name="content" id="content"></textarea>
+        
+        <label>Select Category</label>
+        <select name="category_id">
+            @foreach ($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
+        </select>
+        
+        <button type="submit">Save</button>
+    </form>
 </div>
